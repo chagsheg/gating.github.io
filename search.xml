@@ -537,31 +537,6 @@
     
     
     <entry>
-      <title>针对集合的小方法</title>
-      <link href="/2018/03/28/2018-03-28-%E9%92%88%E5%AF%B9%E9%9B%86%E5%90%88%E7%9A%84%E5%B0%8F%E6%96%B9%E6%B3%95/"/>
-      <url>/2018/03/28/2018-03-28-%E9%92%88%E5%AF%B9%E9%9B%86%E5%90%88%E7%9A%84%E5%B0%8F%E6%96%B9%E6%B3%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="根据所提供的字符分组"><a href="#根据所提供的字符分组" class="headerlink" title="根据所提供的字符分组"></a>根据所提供的字符分组</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据所提供的字符分组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 需要分组的字段 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">keyBy</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">newObj, obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!newObj[obj[key]]) &#123;</span><br><span class="line">            newObj[obj[key]] = [];</span><br><span class="line">            newObj[obj[key]].push(obj);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newObj[obj[key]].push(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newObj;</span><br><span class="line">    &#125;, &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = delListRep(arr,<span class="string">"id"</span>) <span class="comment">// &#123;1:[&#123;id:1&#125;],2:[&#123;id:2&#125;]&#125;</span></span><br></pre></td></tr></table></figure></div><h1 id="根据所提供的字段排序"><a href="#根据所提供的字段排序" class="headerlink" title="根据所提供的字段排序"></a>根据所提供的字段排序</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 排序数组里的对象(集合)的某个字段排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 字段名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortObj</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">m, n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> key1 = m[key]</span><br><span class="line">        <span class="keyword">var</span> key2 = n[key]</span><br><span class="line">        <span class="keyword">return</span> key2 - key1</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = sortObj(arr,<span class="string">"id"</span>) <span class="comment">// [&#123;id:2&#125;,&#123;id:1&#125;]</span></span><br></pre></td></tr></table></figure></div><h1 id="根据所提供的字段去重"><a href="#根据所提供的字段去重" class="headerlink" title="根据所提供的字段去重"></a>根据所提供的字段去重</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 去除指定字段的重复集合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 需要去重的字段</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delListRep</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        keys.push(arr[i][key])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">ele, i, arr</span>) =&gt;</span> keys.indexOf(ele[key]) == i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = delListRep(arr,<span class="string">"id"</span>) <span class="comment">// [&#123;id:1&#125;,&#123;id:2&#125;]</span></span><br></pre></td></tr></table></figure></div><p>这样子我们就能简单的去重啦o(<em>￣▽￣</em>)ブ 484神奇</p><p>最后，感谢各位观众老爷的观看</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 记录 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> javascript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>http协议</title>
       <link href="/2018/03/28/2018-03-28-http/"/>
       <url>/2018/03/28/2018-03-28-http/</url>
@@ -579,6 +554,31 @@
         <tags>
             
             <tag> http </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>针对集合的小方法</title>
+      <link href="/2018/03/28/2018-03-28-%E9%92%88%E5%AF%B9%E9%9B%86%E5%90%88%E7%9A%84%E5%B0%8F%E6%96%B9%E6%B3%95/"/>
+      <url>/2018/03/28/2018-03-28-%E9%92%88%E5%AF%B9%E9%9B%86%E5%90%88%E7%9A%84%E5%B0%8F%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="根据所提供的字符分组"><a href="#根据所提供的字符分组" class="headerlink" title="根据所提供的字符分组"></a>根据所提供的字符分组</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据所提供的字符分组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 需要分组的字段 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">keyBy</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">newObj, obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!newObj[obj[key]]) &#123;</span><br><span class="line">            newObj[obj[key]] = [];</span><br><span class="line">            newObj[obj[key]].push(obj);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            newObj[obj[key]].push(obj);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newObj;</span><br><span class="line">    &#125;, &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = delListRep(arr,<span class="string">"id"</span>) <span class="comment">// &#123;1:[&#123;id:1&#125;],2:[&#123;id:2&#125;]&#125;</span></span><br></pre></td></tr></table></figure></div><h1 id="根据所提供的字段排序"><a href="#根据所提供的字段排序" class="headerlink" title="根据所提供的字段排序"></a>根据所提供的字段排序</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 排序数组里的对象(集合)的某个字段排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 字段名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortObj</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">m, n</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> key1 = m[key]</span><br><span class="line">        <span class="keyword">var</span> key2 = n[key]</span><br><span class="line">        <span class="keyword">return</span> key2 - key1</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = sortObj(arr,<span class="string">"id"</span>) <span class="comment">// [&#123;id:2&#125;,&#123;id:1&#125;]</span></span><br></pre></td></tr></table></figure></div><h1 id="根据所提供的字段去重"><a href="#根据所提供的字段去重" class="headerlink" title="根据所提供的字段去重"></a>根据所提供的字段去重</h1><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 去除指定字段的重复集合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;Array&#125;</span> </span>arr =&gt; 数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;String&#125;</span> </span>key =&gt; 需要去重的字段</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delListRep</span>(<span class="params">arr, key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> keys = []</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        keys.push(arr[i][key])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.filter(<span class="function">(<span class="params">ele, i, arr</span>) =&gt;</span> keys.indexOf(ele[key]) == i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><blockquote><p>测试我们写的方法</p></blockquote><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">javascript</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> res = delListRep(arr,<span class="string">"id"</span>) <span class="comment">// [&#123;id:1&#125;,&#123;id:2&#125;]</span></span><br></pre></td></tr></table></figure></div><p>这样子我们就能简单的去重啦o(<em>￣▽￣</em>)ブ 484神奇</p><p>最后，感谢各位观众老爷的观看</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
             
         </tags>
       
@@ -641,31 +641,6 @@
     
     
     <entry>
-      <title>你好,世界</title>
-      <link href="/2018/03/21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/"/>
-      <url>/2018/03/21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/</url>
-      
-        <content type="html"><![CDATA[<p>话说，从2016年年初，我就一直有一个想法，就是搭建一个自己的博客，让自己更有归属感。但是奈何 现实太骨感 一开始想的太多，想“完全自己搭建前后端，想…” 结果，一直想了一年多，也没有开始行动 (应该说，从去年才开始用腾讯云搭了一个简单的博客，然后又放弃管了)</p><blockquote><p>止到现在，心血来潮，又想找点归属感了</p></blockquote><p>就在昨天，闲来无事，自己在window搭建jekyll= =一路下来,也不是十分顺利</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 随笔 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>一维数组构建指定个数的二位数组</title>
       <link href="/2018/03/21/2018-03-21-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%9E%84%E5%BB%BA%E4%BA%8C%E4%BD%8D%E6%95%B0%E7%BB%84/"/>
       <url>/2018/03/21/2018-03-21-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%9E%84%E5%BB%BA%E4%BA%8C%E4%BD%8D%E6%95%B0%E7%BB%84/</url>
@@ -683,6 +658,31 @@
         <tags>
             
             <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>你好,世界</title>
+      <link href="/2018/03/21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/"/>
+      <url>/2018/03/21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C/</url>
+      
+        <content type="html"><![CDATA[<p>话说，从2016年年初，我就一直有一个想法，就是搭建一个自己的博客，让自己更有归属感。但是奈何 现实太骨感 一开始想的太多，想“完全自己搭建前后端，想…” 结果，一直想了一年多，也没有开始行动 (应该说，从去年才开始用腾讯云搭了一个简单的博客，然后又放弃管了)</p><blockquote><p>止到现在，心血来潮，又想找点归属感了</p></blockquote><p>就在昨天，闲来无事，自己在window搭建jekyll= =一路下来,也不是十分顺利</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
