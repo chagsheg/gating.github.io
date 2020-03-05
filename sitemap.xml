@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gatings.cn/404.html</loc>
+    
+    <lastmod>2020-03-05T05:03:10.947Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://gatings.cn/2019/12/30/2019-12-30-docker-compose%E7%9A%84mysql%E5%92%8Cmongo%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</loc>
     
     <lastmod>2020-03-04T14:43:15.369Z</lastmod>
