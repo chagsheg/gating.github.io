@@ -333,6 +333,31 @@
     
     
     <entry>
+      <title>vscode的个人配置</title>
+      <link href="/2018-05-09/2018-05-09-vscode%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/"/>
+      <url>/2018-05-09/2018-05-09-vscode%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此篇只是为了记录自己vscode的设置，防止以后配置丢失，无实际意义</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">json</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnType"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"fileheader.Author"</span>: <span class="string">"gating"</span>,</span><br><span class="line">    <span class="attr">"fileheader.LastModifiedBy"</span>: <span class="string">"gating"</span>,</span><br><span class="line">    <span class="attr">"explorer.confirmDelete"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"vetur.validation.template"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"git.enableSmartCommit"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emmet.triggerExpansionOnTab"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emmet.includeLanguages"</span>: &#123;</span><br><span class="line">        <span class="attr">"vue-html"</span>: <span class="string">"html"</span>,</span><br><span class="line">        <span class="attr">"vue"</span>: <span class="string">"html"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.associations"</span>: &#123;</span><br><span class="line">        <span class="attr">"*.wxss"</span>: <span class="string">"css"</span>,</span><br><span class="line">        <span class="attr">"*.html"</span>: <span class="string">"html"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"window.menuBarVisibility"</span>: <span class="string">"default"</span>,</span><br><span class="line">    <span class="attr">"window.zoomLevel"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"python.linting.flake8Enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"python.formatting.provider"</span>: <span class="string">"yapf"</span>,</span><br><span class="line">    <span class="attr">"guides.enabled"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"editor.renderWhitespace"</span>: <span class="string">"none"</span>,</span><br><span class="line">    <span class="attr">"editor.renderControlCharacters"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"git.autofetch"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"</span>,</span><br><span class="line">    <span class="attr">"git.confirmSync"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"px2rem.rootFontSize"</span>: <span class="number">75</span>,</span><br><span class="line">    <span class="attr">"px2rem.isNeedNotes"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"workbench.settings.useSplitJSON"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.settings.editor"</span>: <span class="string">"json"</span>,</span><br><span class="line">    <span class="attr">"javascript.updateImportsOnFileMove.enabled"</span>: <span class="string">"always"</span>,</span><br><span class="line">    <span class="attr">"sync.gist"</span>: <span class="string">"023ae35a68a66e3b5e122045f4c94d0e"</span>,</span><br><span class="line">    <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"prettier"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Dracula"</span>,</span><br><span class="line">    <span class="attr">"html-css-class-completion.includeGlobPattern"</span>: <span class="string">"**/*.&#123;css,html,vue,jsx&#125;"</span>,</span><br><span class="line">    <span class="attr">"vetur.format.options.tabSize"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"[jsonc]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"HookyQR.beautify"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编辑器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>针对于移动端的兼容适配</title>
       <link href="/2018-05-09/2018-05-09-%E9%92%88%E5%AF%B9%E4%BA%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%85%BC%E5%AE%B9%E9%80%82%E9%85%8D/"/>
       <url>/2018-05-09/2018-05-09-%E9%92%88%E5%AF%B9%E4%BA%8E%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%85%BC%E5%AE%B9%E9%80%82%E9%85%8D/</url>
@@ -354,31 +379,6 @@
             <tag> html </tag>
             
             <tag> css </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>vscode的个人配置</title>
-      <link href="/2018-05-09/2018-05-09-vscode%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/"/>
-      <url>/2018-05-09/2018-05-09-vscode%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此篇只是为了记录自己vscode的设置，防止以后配置丢失，无实际意义</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand code-closed" aria-hidden="true"></i><div class="code_lang">json</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"files.autoSave"</span>: <span class="string">"afterDelay"</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnType"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"fileheader.Author"</span>: <span class="string">"gating"</span>,</span><br><span class="line">    <span class="attr">"fileheader.LastModifiedBy"</span>: <span class="string">"gating"</span>,</span><br><span class="line">    <span class="attr">"explorer.confirmDelete"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"vetur.validation.template"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"git.enableSmartCommit"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emmet.triggerExpansionOnTab"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emmet.includeLanguages"</span>: &#123;</span><br><span class="line">        <span class="attr">"vue-html"</span>: <span class="string">"html"</span>,</span><br><span class="line">        <span class="attr">"vue"</span>: <span class="string">"html"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.activityBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.associations"</span>: &#123;</span><br><span class="line">        <span class="attr">"*.wxss"</span>: <span class="string">"css"</span>,</span><br><span class="line">        <span class="attr">"*.html"</span>: <span class="string">"html"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"window.menuBarVisibility"</span>: <span class="string">"default"</span>,</span><br><span class="line">    <span class="attr">"window.zoomLevel"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"python.linting.flake8Enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"python.formatting.provider"</span>: <span class="string">"yapf"</span>,</span><br><span class="line">    <span class="attr">"guides.enabled"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"editor.renderWhitespace"</span>: <span class="string">"none"</span>,</span><br><span class="line">    <span class="attr">"editor.renderControlCharacters"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"git.autofetch"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.statusBar.visible"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"terminal.integrated.shell.windows"</span>: <span class="string">"C:\\windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"</span>,</span><br><span class="line">    <span class="attr">"git.confirmSync"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"px2rem.rootFontSize"</span>: <span class="number">75</span>,</span><br><span class="line">    <span class="attr">"px2rem.isNeedNotes"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"workbench.settings.useSplitJSON"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.settings.editor"</span>: <span class="string">"json"</span>,</span><br><span class="line">    <span class="attr">"javascript.updateImportsOnFileMove.enabled"</span>: <span class="string">"always"</span>,</span><br><span class="line">    <span class="attr">"sync.gist"</span>: <span class="string">"023ae35a68a66e3b5e122045f4c94d0e"</span>,</span><br><span class="line">    <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"prettier"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Dracula"</span>,</span><br><span class="line">    <span class="attr">"html-css-class-completion.includeGlobPattern"</span>: <span class="string">"**/*.&#123;css,html,vue,jsx&#125;"</span>,</span><br><span class="line">    <span class="attr">"vetur.format.options.tabSize"</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">"[jsonc]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"HookyQR.beautify"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
-      
-      
-      <categories>
-          
-          <category> 编辑器 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> vscode </tag>
             
         </tags>
       
@@ -537,31 +537,6 @@
     
     
     <entry>
-      <title>DOM事件</title>
-      <link href="/2018-03-28/2018-03-28-DOM%E4%BA%8B%E4%BB%B6/"/>
-      <url>/2018-03-28/2018-03-28-DOM%E4%BA%8B%E4%BB%B6/</url>
-      
-        <content type="html"><![CDATA[<h1 id="DOM事件级别"><a href="#DOM事件级别" class="headerlink" title="DOM事件级别"></a>DOM事件级别</h1><ol><li><p>DOM0 element.onclick=function(){}</p></li><li><p>DOM2 </p><ol><li>第一个参数是事件名（如click）；第二个参数是事件处理程序函数；第三个参数如果是true则表示在捕获阶段调用，为false表示在冒泡阶段调用。</li><li>elemnt.addEventListener(‘click’,function(){},false) elemnt.removeEventListener(‘click’,function(){},false)</li><li>elemnt.attachEvent(‘onclick’,function(){}) elemnt.attachEvent(‘onclick’,function(){}) <font color="#f00">兼容IE7、IE8等早期版本</font></li></ol></li><li><p>DOM3 elemnt.addEventListener(‘keyup’,function(){},false) 同上,增加了鼠标、键盘等事件</p></li></ol><blockquote><p>ps：不能移除匿名添加的函数。</p></blockquote><h2 id="为什么没有DOM1"><a href="#为什么没有DOM1" class="headerlink" title="为什么没有DOM1"></a>为什么没有DOM1</h2><p>DOM1于1998年10月1日成为W3C推荐标准。DOM1标准中并没有定义事件相关的内容，所以没有所谓的DOM1事件模型</p><h1 id="DOM事件模型"><a href="#DOM事件模型" class="headerlink" title="DOM事件模型"></a>DOM事件模型</h1><p>冒泡和捕获</p><h1 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h1><p>事件捕获阶段、处于目标阶段和事件冒泡阶段</p><p>捕获-&gt;目标阶段-&gt;冒泡</p><h1 id="描述DOM事件捕获的具体流程"><a href="#描述DOM事件捕获的具体流程" class="headerlink" title="描述DOM事件捕获的具体流程"></a>描述DOM事件捕获的具体流程</h1><p>window-&gt;document-&gt;html-&gt;body-&gt;···-&gt;目标元素</p><h1 id="Event对象的常见问题"><a href="#Event对象的常见问题" class="headerlink" title="Event对象的常见问题"></a>Event对象的常见问题</h1><ol><li><p>event.preventDefault() 阻止默认是行为</p></li><li><p>event.stopPropagation()  阻止冒泡</p></li><li><p>event.stoplmmediatePropagation() 事件优先级</p></li><li><p>event.currentTarget 当前绑定事件的对象</p></li><li><p>event.target 当前点击对象</p></li></ol>]]></content>
-      
-      
-      <categories>
-          
-          <category> 记录 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> javascript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>http协议</title>
       <link href="/2018-03-28/2018-03-28-http/"/>
       <url>/2018-03-28/2018-03-28-http/</url>
@@ -579,6 +554,31 @@
         <tags>
             
             <tag> http </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>DOM事件</title>
+      <link href="/2018-03-28/2018-03-28-DOM%E4%BA%8B%E4%BB%B6/"/>
+      <url>/2018-03-28/2018-03-28-DOM%E4%BA%8B%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="DOM事件级别"><a href="#DOM事件级别" class="headerlink" title="DOM事件级别"></a>DOM事件级别</h1><ol><li><p>DOM0 element.onclick=function(){}</p></li><li><p>DOM2 </p><ol><li>第一个参数是事件名（如click）；第二个参数是事件处理程序函数；第三个参数如果是true则表示在捕获阶段调用，为false表示在冒泡阶段调用。</li><li>elemnt.addEventListener(‘click’,function(){},false) elemnt.removeEventListener(‘click’,function(){},false)</li><li>elemnt.attachEvent(‘onclick’,function(){}) elemnt.attachEvent(‘onclick’,function(){}) <font color="#f00">兼容IE7、IE8等早期版本</font></li></ol></li><li><p>DOM3 elemnt.addEventListener(‘keyup’,function(){},false) 同上,增加了鼠标、键盘等事件</p></li></ol><blockquote><p>ps：不能移除匿名添加的函数。</p></blockquote><h2 id="为什么没有DOM1"><a href="#为什么没有DOM1" class="headerlink" title="为什么没有DOM1"></a>为什么没有DOM1</h2><p>DOM1于1998年10月1日成为W3C推荐标准。DOM1标准中并没有定义事件相关的内容，所以没有所谓的DOM1事件模型</p><h1 id="DOM事件模型"><a href="#DOM事件模型" class="headerlink" title="DOM事件模型"></a>DOM事件模型</h1><p>冒泡和捕获</p><h1 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h1><p>事件捕获阶段、处于目标阶段和事件冒泡阶段</p><p>捕获-&gt;目标阶段-&gt;冒泡</p><h1 id="描述DOM事件捕获的具体流程"><a href="#描述DOM事件捕获的具体流程" class="headerlink" title="描述DOM事件捕获的具体流程"></a>描述DOM事件捕获的具体流程</h1><p>window-&gt;document-&gt;html-&gt;body-&gt;···-&gt;目标元素</p><h1 id="Event对象的常见问题"><a href="#Event对象的常见问题" class="headerlink" title="Event对象的常见问题"></a>Event对象的常见问题</h1><ol><li><p>event.preventDefault() 阻止默认是行为</p></li><li><p>event.stopPropagation()  阻止冒泡</p></li><li><p>event.stoplmmediatePropagation() 事件优先级</p></li><li><p>event.currentTarget 当前绑定事件的对象</p></li><li><p>event.target 当前点击对象</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javascript </tag>
             
         </tags>
       
@@ -666,31 +666,6 @@
     
     
     <entry>
-      <title>你好,世界</title>
-      <link href="/2018-03-21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%20-%20%E5%89%AF%E6%9C%AC/"/>
-      <url>/2018-03-21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%20-%20%E5%89%AF%E6%9C%AC/</url>
-      
-        <content type="html"><![CDATA[<p>话说，从2016年年初，我就一直有一个想法，就是搭建一个自己的博客，让自己更有归属感。但是奈何 现实太骨感 一开始想的太多，想“完全自己搭建前后端，想…” 结果，一直想了一年多，也没有开始行动 (应该说，从去年才开始用腾讯云搭了一个简单的博客，然后又放弃管了)</p><blockquote><p>止到现在，心血来潮，又想找点归属感了</p></blockquote><p>就在昨天，闲来无事，自己在window搭建jekyll= =一路下来,也不是十分顺利</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 随笔 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 随笔 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>一维数组构建指定个数的二位数组</title>
       <link href="/2018-03-21/2018-03-21-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%9E%84%E5%BB%BA%E4%BA%8C%E4%BD%8D%E6%95%B0%E7%BB%84/"/>
       <url>/2018-03-21/2018-03-21-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E6%9E%84%E5%BB%BA%E4%BA%8C%E4%BD%8D%E6%95%B0%E7%BB%84/</url>
@@ -708,6 +683,31 @@
         <tags>
             
             <tag> javascript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>你好,世界</title>
+      <link href="/2018-03-21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%20-%20%E5%89%AF%E6%9C%AC/"/>
+      <url>/2018-03-21/2018-03-21-%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%96%E7%95%8C%20-%20%E5%89%AF%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<p>话说，从2016年年初，我就一直有一个想法，就是搭建一个自己的博客，让自己更有归属感。但是奈何 现实太骨感 一开始想的太多，想“完全自己搭建前后端，想…” 结果，一直想了一年多，也没有开始行动 (应该说，从去年才开始用腾讯云搭了一个简单的博客，然后又放弃管了)</p><blockquote><p>止到现在，心血来潮，又想找点归属感了</p></blockquote><p>就在昨天，闲来无事，自己在window搭建jekyll= =一路下来,也不是十分顺利</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
