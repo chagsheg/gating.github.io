@@ -35,7 +35,7 @@ addons:
 
 branches:
   only:
-    - hexo
+    - blog
 
 env:
  global:

@@ -102,7 +102,7 @@ deploy:
   repo: 
     - https://gh_token@github.com/GATING/gating.github.io.git
     - https://gating:co_token@e.coding.net/gating/family.git
-  branch: blog
+  branch: master
   message: updated blog
 
 # Atom feed
