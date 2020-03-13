@@ -26,8 +26,7 @@ script:
 after_script:
   - git config user.name "gating"
   - git config user.email "674964222@qq.com"
-  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
-  - sed -i "s/co_token/${CO_TOKEN}/g" ./_config.yml
+  - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml && sed -i "s/co_token/${CO_TOKEN}/g" ./_config.yml
   - hexo deploy
 
 addons:
