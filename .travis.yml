@@ -14,7 +14,6 @@ install:
  
 script:
   - hexo clean
-  - git rev-parse HEAD > VERSION.txt
 
 after_script:
   - echo 'Build Master Repository(Coding Pages)'
