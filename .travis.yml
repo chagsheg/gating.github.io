@@ -23,7 +23,7 @@ after_script:
   - git config user.email "674964222@qq.com"
   - cd ./public
   - git init
-  - git remote add origin master https://github.com/gating/gating.github.io 
+  - git remote add origin master https://e.coding.net/gating/family
   - git add .
   - git commit -m "Coding Pages Build"
   - git push --force --quiet "https://${CO_USER}:${CO_TOKEN}@${CO_REF}" master:master
@@ -37,7 +37,7 @@ after_script:
   - git config user.email "674964222@qq.com"
   - cd ./public
   - git init 
-  - git remote add origin master https://github.com/gating/qinyuanpe.github.io
+  - git remote add origin master https://github.com/gating/gating.github.io
   - git add .
   - git commit -m "Github Pages Build"
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master
