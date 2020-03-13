@@ -11,12 +11,7 @@ notifications:
 
 before_install:
   - export TZ='Asia/Shanghai'
-  - npm install hexo -g
   - npm install hexo-cli -g
-
-
-before_install:
-  - npm install -g hexo-cli
 
 # Start: Build Lifecycle
 install:
@@ -29,8 +24,6 @@ script:
 
 
 after_script:
-  - cd ./public
-  - git init 
   - git config user.name "gating"
   - git config user.email "674964222@qq.com"
   - sed -i "s/gh_token/${GH_TOKEN}/g" ./_config.yml
