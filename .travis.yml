@@ -11,6 +11,7 @@ notifications:
 
 before_install:
 - export TZ='Asia/Shanghai'
+- npm install hexo -g
 - npm install hexo-cli -g
 
 install:
