@@ -25,7 +25,7 @@ after_script:
   - git remote add origin master https://e.coding.net/gating/family.git
   - git add .
   - git commit -m "Coding Pages Build"
-  - git push --force --quiet "https://${CO_USER}:${CO_TOKEN}@${CO_REF}" master:master
+  - git push --force --quiet "https://gating:${CO_TOKEN}@${CO_REF}" master:master
   # Prepare Rebuild
   - cd ..
   - rm -rf ./public
@@ -40,7 +40,6 @@ after_script:
   - git add .
   - git commit -m "Github Pages Build"
   - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master
-  - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" master:master --tags
 
 addons:
   apt:
