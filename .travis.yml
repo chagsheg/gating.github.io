@@ -10,16 +10,22 @@ notifications:
     on_failure: always # default: always
 
 before_install:
-- export TZ='Asia/Shanghai'
-- npm install hexo -g
-- npm install hexo-cli -g
+  - export TZ='Asia/Shanghai'
+  - npm install hexo -g
+  - npm install hexo-cli -g
 
+
+before_install:
+  - npm install -g hexo-cli
+
+# Start: Build Lifecycle
 install:
-- npm install
+  - npm install
+  - npm install hexo-deployer-git --save
 
 script:
-- hexo clean
-- hexo generate
+  - hexo clean
+  - hexo generate
 
 
 after_script:
