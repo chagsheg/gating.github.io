@@ -323,7 +323,8 @@ function setStyle(val) {
 }
 // 每个字的样式
 function numStyle(time) {
-    return time.split("").map(val => setStyle(val));
+    // 这里等于0则清除样式，避免0点时，有奇怪的bug
+    return time.split("").map(val => (val == "0" ? style : setStyle(val)));
 }
 
 export default {
