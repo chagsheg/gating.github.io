@@ -99,7 +99,7 @@ katex:
 
 # Post info settings
 # ---------------
-avatar: /img/avatar.png
+avatar: https://cdn.jsdelivr.net/gh/GATING/blog_imgs@master/blog/avatar.png
 
 # the banner image of index
 index_img: https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/top_img/index.jpg
