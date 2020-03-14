@@ -65,3 +65,392 @@ emmm... 不知是否有看过我之前的一篇文章[用jq实现的单个span�
 
 > ps: 中间的 `:` 是只需要一个 `span` 的
 
+因为布局不是我们要将的重点，所以我们就想想我们该怎么获取我们需要的东西。比如，怎么获取到`Saturday 14 March`,怎么获取到当前时间
+
+众所周知啦，我们知道 `js` 中提供了 `Date` 这个对象，所以我们可以通过他可以获取我们想要的东西，废话不多说了，开始写代码吧。
+
+新建 `utils` 目录，在该目录下新建 `time.js` 文件，内容如下
+
+```js
+// 月份
+const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+];
+// 星期
+const weekday = [
+    "Sunday","Monday","Tuesday","Wednesday",
+    "Thursday","Friday","Saturday"
+];
+// 获取日期
+function getTime() {
+    const date = new Date();
+    const days = date.getDate();
+    const month = date.getMonth();
+    const day = date.getDay();
+    const hours = toDou(date.getHours());
+    const minutes = toDou(date.getMinutes());
+    const seconds = toDou(date.getSeconds());
+    return {
+        date: `${weekday[day]} ${days} ${months[month]}`,
+        time: `${hours}:${minutes}:${seconds}`
+    };
+}
+// 转成两位 eg: 6 => 06
+function toDou(str) {
+    const num = ~~str;
+    return num > 9 ? num : "0" + str;
+}
+
+// 测试一下我们写的方法，上线记得注释掉
+// console.log(getTime()) // {date: "Saturday 14 March", time: "18:53:40"}
+
+export default getTime
+```
+通过上面代码，我们就得到我们需要的格式啦，接下来就是写布局啦，但这里不是我们的重点，所以略过
+
+```html
+<template>
+    <div
+        class="time-container"
+        :class="{ dark: isDark }"
+        @click="toggleClass"
+        :date="date"
+    >
+        <div class="time">
+            <template v-for="(str, idx) in time">
+                <div
+                    class="time-num"
+                    v-if="str !== ':'"
+                    :style="numStyle[idx]"
+                    :key="idx"
+                >
+                    <span
+                        v-for="(i, spanIdx) in haveSpan[idx]"
+                        :key="spanIdx"
+                        >{{ i - 1 }}</span
+                    >
+                    <span>0</span>
+                </div>
+                <div class="time-dist" v-else :key="idx">
+                    <span>{{ str }}</span>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+
+<script>
+import getTime from "../utils/time";
+// 设置样式
+function setStyle(val) {
+    return `transform: translateY(-${~~val * 100}%)`;
+}
+// 每个字的样式
+function numStyle(time) {
+    return time.split("").map(val => setStyle(val));
+}
+export default {
+    name: "TimeScreen",
+    data() {
+        const { time,date } = getTime();
+        return {
+            isDark: 0,
+            time,
+            date,
+            numStyle: numStyle(time)
+        };
+    },
+    methods: {
+        // 切换样式
+        toggleClass() {
+            this.isDark = !this.isDark;
+        },
+    },
+    created() {
+        // 判单有多少个Span
+        // 比较小时数最多24小时，所以第一位最多是3个，0、1、2 
+        // 这里使用 freeze 是因为这个值已经固定，没有必要进行数据劫持
+        this.haveSpan = Object.freeze([3, 10, 0, 6, 10, 0, 6, 10]);
+    }
+};
+</script>
+<style lang="scss" scoped>
+%flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+$timeColor: #d9d4d0;
+$white: #fff;
+.time-container {
+    background: $white;
+    color: $timeColor;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 540px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    &.dark {
+        background: #000;
+        color: $white;
+    }
+    &::after {
+        content: attr(date);
+        position: absolute;
+        color: $timeColor;
+        font-size: 18px;
+        line-height: 1;
+        transform: rotate(90deg);
+        bottom: 20%;
+        left: -48px;
+    }
+    @extend %flexCenter;
+    .time {
+        font-size: 70px;
+        transform: rotate(90deg);
+        position: relative;
+        height: 106px;
+        line-height: 106px;
+        overflow: hidden;
+        @extend %flexCenter;
+
+        .time-num {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            text-shadow: 0 0 2px $white;
+            transition: 0.5s all;
+            span {
+                display: block;
+            }
+        }
+        .time-dist {
+            padding-bottom: 15px;
+            margin: 0 10px;
+        }
+    }
+}
+</style>
+```
+
+写到这里，其实基本的样子已经出来了，这里我们用到了 `attr` 函数，用来回选择元素的属性值，这个小技巧在一些场景很用用哦。
+
+这里我们多加了一个 `<span>0</span>` 这里主要是为了无缝，那么我们如何做到无缝呢？即，当我们滚动最低下的时候，在`500ms`之内让动画取消。
+
+> ps: 这里的 `500ms` 是因为动画设置了 `500ms`,所以需要用 `1s - 500ms` 得出来的`500ms`哦
+
+既然知道了原理，那么我们就开始写我们的代码了
+
+首先定义一下清空动画之后的样式，即
+
+ ```js
+// 清除样式
+const style = "transform: translateY(0%);transition:0s all";
+ ```
+
+那么什么时候清空呢，前面也说了，当滚动到最下面的时候，也就是当 `time` 这个字符串某个为 `0` 的时候，我们就要清空了，所以
+
+```js
+this.time.split("").forEach((val, idx) => {
+    // 当 val 为 0 时，说明已经滚到最底下，这里需要清除动画，并让他回到最顶上来实现无缝
+    if (val == 0) {
+        if (this.numStyle[idx] !== style) {
+            // 500ms后清除当前这个span的动画
+            this.removeAnimate(idx);
+            // 设置样式
+            this.numStyle[idx] = setStyle(this.haveSpan[idx]);
+        }
+    } else {
+        this.numStyle[idx] = setStyle(val);
+    }
+})
+
+// 清除动画
+removeAnimate(idx) {
+    setTimeout(() => {
+        this.numStyle[idx] = style;
+        this.numStyle = [...this.numStyle];
+    }, 500);
+}
+```
+
+最后，就是写一个简单的定时器啦，我想这应该难不倒各位小伙伴啦，所以我就不详解啦，就贴一下代码
+
+```html
+<template>
+    <div
+        class="time-container"
+        :class="{ dark: isDark }"
+        @click="toggleClass"
+        :date="date"
+    >
+        <div class="time">
+            <template v-for="(str, idx) in time">
+                <div
+                    class="time-num"
+                    v-if="str !== ':'"
+                    :style="numStyle[idx]"
+                    :key="idx"
+                >
+                    <span
+                        v-for="(i, spanIdx) in haveSpan[idx]"
+                        :key="spanIdx"
+                        >{{ i - 1 }}</span
+                    >
+                    <span>0</span>
+                </div>
+                <div class="time-dist" v-else :key="idx">
+                    <span>{{ str }}</span>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>
+
+<script>
+import getTime from "../utils/time";
+
+// 清除样式
+const style = "transform: translateY(0%);transition:0s all";
+
+// 设置样式
+function setStyle(val) {
+    return `transform: translateY(-${~~val * 100}%)`;
+}
+// 每个字的样式
+function numStyle(time) {
+    return time.split("").map(val => setStyle(val));
+}
+
+export default {
+    name: "TimeScreen",
+    data() {
+        // 获取时间
+        let { time, date } = getTime();
+        return {
+            isDark: 0,
+            time,
+            date,
+            numStyle: numStyle(time)
+        };
+    },
+    methods: {
+        // 更新样式
+        updateStyle() {
+            this.time.split("").forEach((val, idx) => {
+                if (val == 0) {
+                    if (this.numStyle[idx] !== style) {
+                        this.removeAnimate(idx);
+                        this.numStyle[idx] = setStyle(this.haveSpan[idx]);
+                    }
+                } else {
+                    this.numStyle[idx] = setStyle(val);
+                }
+            });
+        },
+        // 切换样式
+        toggleClass() {
+            this.isDark = !this.isDark;
+        },
+        // 清除样式
+        removeAnimate(idx) {
+            setTimeout(() => {
+                this.numStyle[idx] = style;
+                this.numStyle = [...this.numStyle];
+            }, 500);
+        },
+        // 每秒更新时间
+        updateTime() {
+            const { time, date } = getTime();
+            this.time = time;
+            this.date = date;
+            this.updateStyle();
+        }
+    },
+    created() {
+        // 判单有多少个Span
+        // 比较小时数最多24小时，所以第一位最多是3个，0、1、2
+        this.haveSpan = Object.freeze([3, 10, 0, 6, 10, 0, 6, 10]);
+        // 定时器
+        this.timer = null;
+    },
+    mounted() {
+        // 触发定时器
+        this.timer = setInterval(this.updateTime, 1000);
+    },
+    destroyed() {
+        // 清除定时器
+        clearInterval(this.timer);
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+%flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+$timeColor: #d9d4d0;
+$white: #fff;
+.time-container {
+    background: $white;
+    color: $timeColor;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 540px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    &.dark {
+        background: #000;
+        color: $white;
+    }
+    &::after {
+        content: attr(date);
+        position: absolute;
+        color: $timeColor;
+        font-size: 18px;
+        line-height: 1;
+        transform: rotate(90deg);
+        bottom: 20%;
+        left: -48px;
+    }
+    @extend %flexCenter;
+    .time {
+        font-size: 70px;
+        transform: rotate(90deg);
+        position: relative;
+        height: 106px;
+        line-height: 106px;
+        overflow: hidden;
+        @extend %flexCenter;
+
+        .time-num {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            text-shadow: 0 0 2px $white;
+            transition: 0.5s all;
+            span {
+                display: block;
+            }
+        }
+        .time-dist {
+            padding-bottom: 15px;
+            margin: 0 10px;
+        }
+    }
+}
+</style>
+```
+
+# 最后的最后
+
+感谢各位观众老爷的观看啦O(∩_∩)O，希望大家可以一起进步
