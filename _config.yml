@@ -148,7 +148,7 @@ image_minifier:
 
 algolia:
   applicationID: 'HTTIV43OOZ'
-  apiKey: '7cc9c6fb2ff239c414b38c4637bfae12'
+  apiKey: '1b7baff46c6a39daf2359fa5692362b0'
   indexName: 'gating'
   chunkSize: 5000
 # offline config passed to sw-precache.
