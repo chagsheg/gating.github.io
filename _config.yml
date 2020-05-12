@@ -146,11 +146,11 @@ image_minifier:
   silent: false
 
 
-algolia:
-  applicationID: 'HTTIV43OOZ'
-  apiKey: '1b7baff46c6a39daf2359fa5692362b0'
-  indexName: 'gating'
-  chunkSize: 5000
+# algolia:
+#  applicationID: 'HTTIV43OOZ'
+#  apiKey: '1b7baff46c6a39daf2359fa5692362b0'
+#  indexName: 'gating'
+#  chunkSize: 5000
 # offline config passed to sw-precache.
 # offline:
 #   maximumFileSizeToCacheInBytes: 10485760 # 緩存的最大文件大小，以字節為單位
