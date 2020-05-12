@@ -145,6 +145,11 @@ image_minifier:
   progressive: false
   silent: false
 
+search:
+  path: search.xml
+  field: post
+  content: true
+
 algolia:
   applicationID: 'HTTIV43OOZ'
   apiKey: '1b7baff46c6a39daf2359fa5692362b0'
