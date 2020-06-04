@@ -14,7 +14,6 @@ menu:
   # 清单||fa fa-list:
   #   - 音乐 || /music/ || fa fa-music
   #   - 电影 || /movies/ || fa fa-film
-  
 
 # Favicon
 # ---------------
@@ -61,7 +60,7 @@ social:
 # Algolia search
 # ---------------
 algolia_search:
-  enable: true
+  enable: false
   hits:
     per_page: 6
 
@@ -74,7 +73,7 @@ algolia_search:
 # Please see doc for more details: https://jerryc.me/posts/21cfbf15/#本地搜索
 # ---------------
 local_search:
-  enable: false
+  enable: true
   labels:
     input_placeholder: Search for Posts
     hits_empty: "We didn't find any results for the search: ${query}" # if there are no result
@@ -185,14 +184,14 @@ disqus:
   shortname:
   count: false # top_img顯示評論數
 
-# Disqus.js 版評論系統，應對大陸長城的折中方案，兼容原版：https://github.com/SukkaW/DisqusJS 
+# Disqus.js 版評論系統，應對大陸長城的折中方案，兼容原版：https://github.com/SukkaW/DisqusJS
 # API 申請地址：https://disqus.com/api/applications/
 # 與 disqus 共用樣式
 disqusjs:
   enable: false #開啓改爲 true
-  shortname: 
-  siteName: 
-  apikey: 
+  shortname:
+  siteName:
+  apikey:
   api: https://disqus.skk.moe/disqus/ #一般情況下無需修改 API 地址
   count: false # top_img顯示評論數
 
@@ -229,7 +228,7 @@ valine:
 # ------------------------------------
 since: 2018
 
-footer_custom_text: 由<b>&nbsp;磨蹭&nbsp;</b>倾力打造&nbsp;|&nbsp;<b>女王大人</b>&nbsp;-&nbsp;热情赞助 
+footer_custom_text: 由<b>&nbsp;磨蹭&nbsp;</b>倾力打造&nbsp;|&nbsp;<b>女王大人</b>&nbsp;-&nbsp;热情赞助
 
 footer_copyright:
   enable: false
@@ -270,7 +269,7 @@ bing_site_verification:
 
 # Baidu Webmaster tools verification setting
 # See: https://ziyuan.baidu.com/site/
-baidu_site_verification: 
+baidu_site_verification:
 
 # 360 Webmaster tools verification setting
 # see http://zhanzhang.so.com/
