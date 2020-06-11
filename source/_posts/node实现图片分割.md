@@ -2,7 +2,7 @@
 layout: post
 title: node实现图片分割
 tags: node
-category: 记录
+category: 小工具
 description: 最近，女王大大日常找我弄图片，本来之前我一直是ps帮他弄得，后来- -，ps不能分割过长的图片，我就想想能不能通过代码来帮他实现好了。
 date: 2020/03/11
 ---
