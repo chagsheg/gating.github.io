@@ -23,10 +23,10 @@ date: 2020/06/10
   npm init -y
   ```
 
-- 安装依赖，这里主要用到了三个依赖，分别是`处理图片`、`获取图片大小`、`压缩成zip文件`
+- 安装依赖，这里主要用到了三个依赖，分别是`处理图片`、`批量处理文件`、`压缩成zip文件`
 
   ```bash
-  npm i canvas image-size archiver -S
+  npm i canvas glob archiver -S
   ```
 
 是不是很眼熟，这依赖和我之前的那篇[node 实现图片分割](https://gatings.cn/2020-03-11/node%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%88%86%E5%89%B2/)博客一模一样吗？没错，就是一摸一样，我们再次通过 `canvas`这个库来处理我们的小需求。
@@ -50,8 +50,6 @@ const { basename } = require("path");
 const archiver = require("archiver");
 // 导入canvas库，用于裁剪图片
 const { createCanvas, loadImage } = require("canvas");
-// 获取图片大小
-const sizeOf = require("image-size");
 // 批量获取路径
 const glob = require("glob");
 !(async () => {
@@ -66,7 +64,7 @@ const glob = require("glob");
   for (let i = 0; i < paths.length; i++) {
     const path = paths[i];
     const image = await loadImage(path);
-    const { width, height } = await sizeOf(path);
+    const { width, height } = image;
     const canvas = createCanvas(81, 81);
     const ctx = canvas.getContext("2d");
     ctx.drawImage(image, (81 - width) / 2, (81 - height) / 2);

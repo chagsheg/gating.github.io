@@ -25,10 +25,10 @@ date: 2020/03/11
   npm init -y
   ```
 
-- 安装依赖，这里主要用到了三个依赖，分别是`处理图片`、`获取图片大小`、`压缩成zip文件`
+- 安装依赖，这里主要用到了两个个依赖，分别是`处理图片`、`压缩成zip文件`
 
   ```shell
-  npm i canvas image-size archiver -S
+  npm i canvas archiver -S
   ```
 
 # 简单的使用一下
@@ -46,13 +46,11 @@ const { createWriteStream } = require("fs");
 const archiver = require("archiver");
 // 导入canvas库，用于裁剪图片
 const { createCanvas, loadImage } = require("canvas");
-// 用户获取图片大小
-const sizeOf = require("image-size");
 !(async () => {
   // 加载图片
   const image = await loadImage("./clip.png");
   // 获取图片宽高
-  const { width, height } = await sizeOf("./clip.png");
+  const { width, height } = image;
   // 创建等宽登高的canvas
   const mainCanvas = createCanvas(width, height);
   // 获取canvas上下文
@@ -155,13 +153,11 @@ const { createWriteStream } = require("fs");
 const archiver = require("archiver");
 // 批量裁剪
 const { createCanvas, loadImage } = require("canvas");
-// 获取图片大小
-const sizeOf = require("image-size");
 // 切割方向配置
 const directionConfig = ["vertical", "horizontal"];
 !(async () => {
   const image = await loadImage("./clip.png");
-  const { width, height } = await sizeOf("./clip.png");
+  const { width, height } = image;
   const mainCanvas = createCanvas(width, height);
   const ctx = mainCanvas.getContext("2d");
   ctx.drawImage(image, 0, 0);
