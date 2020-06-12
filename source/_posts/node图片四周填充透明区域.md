@@ -1,7 +1,7 @@
 ---
 layout: post
 title: node实现图片四周填充透明区域
-tags: node
+tags: [node, node-canvas]
 category: 小工具
 description: 不知道你们有没有遇到这样的情况，写小程序的时候，文档里面推荐的 tabbar 图标是 81 * 81，但是实际效果图片又偏大，而且配置项也没有可调节的配置。那么怎么样解决这个问题呢？一般都是找 UI 小姐姐把 icon 四边添加透明填充来调整 icon 大小的。
 date: 2020/06/10
