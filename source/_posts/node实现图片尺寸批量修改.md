@@ -292,6 +292,8 @@ function getOptions(options, config) {
 
 但是其实我这里只是想引申出`使用 Map 代替 if/else`这个思想（思路），通过这个例子，我想以后我们写的代码也可以使用`Map`书写出让我们更好维护的代码了
 
+> [gitee 地址](https://gitee.com/gating/demo/tree/master/canvas-image-resize),[github 地址](https://github.com/GATING/demo/tree/master/canvas-image-resize)
+
 # 最后
 
 感谢各位观众老爷的观看 O(∩_∩)O 希望你能有所收获 😁
