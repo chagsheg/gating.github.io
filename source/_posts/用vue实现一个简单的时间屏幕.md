@@ -2,7 +2,7 @@
 layout: post
 title: 用vue实现一个简单的时间屏幕
 tags: javascript
-category: [小特效, vue]
+category: [小特效,vue]
 description: 去年用了一个小的 app，叫做 一个木函，本来想着用来做动画优化就删掉了的，不过看到他有个时间屏幕的小工具，就点进去看了下，觉得挺好玩的，就想着能不能自己实现以下。
 date: 2020/03/14
 ---
