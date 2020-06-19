@@ -195,6 +195,7 @@ $("ul li").on("mouseout", function () {
 
 > ps：div 必须是绝对定位（absolute）才可以哦
 
+
 ```js
 $("ul li").on("click", function (e) {
   var oDiv = $("<div class='bg2'></div>");
