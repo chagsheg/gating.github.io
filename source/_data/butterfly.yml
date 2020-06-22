@@ -226,7 +226,7 @@ valine:
 
 #####     Footer Settings    ####
 # ------------------------------------
-since: 2018
+since: 2017
 
 footer_custom_text: 由<b>&nbsp;磨蹭&nbsp;</b>倾力打造&nbsp;|&nbsp;<b>女王大人</b>&nbsp;-&nbsp;热情赞助
 
@@ -488,7 +488,7 @@ busuanzi:
 # 也可以寫成 年/月/日 時間
 runtimeshow:
   enable: true
-  start_date: 2018/3/25 00:00:00
+  start_date: 2018/03/17 00:00:00
 
 ####   右下角按鈕  ####
 #----------------------------------------------
