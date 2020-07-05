@@ -182,7 +182,7 @@ module.exports = {
 
 解决方案这里也说的很清楚了，在[https://github.com/ant-design/ant-motion/issues/44](https://github.com/ant-design/ant-motion/issues/44)这个链接，也有说明`Inline JavaScript is not enabled. Is it set in your options?`，告诉我们`less`没开启`JavaScript`功能，我们需要修改下 l`less-loader`的配置即可
 
-因为`vue-cli4`的`webpack`不像`vue-cli2.x`，他对外屏蔽了`webpack`的细节，如果像修改必须创建`vue.config.js`来修改配置，所以我们创建一个`vue.config.js`文件，书写下面配置：
+因为`vue-cli4`的`webpack`不像`vue-cli2.x`，他对外屏蔽了`webpack`的细节，如果想修改必须创建`vue.config.js`来修改配置，所以我们创建一个`vue.config.js`文件，书写下面配置：
 
 ```js
 module.exports = {
