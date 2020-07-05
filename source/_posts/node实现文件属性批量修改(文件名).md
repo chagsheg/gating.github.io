@@ -1854,7 +1854,7 @@ app.use(
 
 和之前讲的一样，后端只需要设置`Content-Type`和`Content-Disposition`这两个响应头就可以实现下载了。但是`archiver`这个库搭配`Koa`返回流给前端，确让我措手不及。
 
-我参考了官方[Express 这个例子](https://github.com/archiverjs/node-archiver/blob/master/examples/express.js)，但是发现在`Koa`身上不顶用，于是我就- -一直翻`issue`，发先很多人和我有同样的问题，最后终于在`stackoverflow`找到了想要的答案。我们可以通过`new Stream.PassThrough()`创建一个双向流，让`archiver`通过`pipe`把数据流写入到`双向流`里，再通过`Koa`返回给前端即可，具体实现如下（`controllers/upload.js`）：
+我参考了官方[Express 这个例子](https://github.com/archiverjs/node-archiver/blob/master/examples/express.js)，但是发现在`Koa`身上不顶用，于是我就- -一直翻`issue`，发现很多人和我有同样的问题，最后终于在`stackoverflow`找到了想要的答案。我们可以通过`new Stream.PassThrough()`创建一个双向流，让`archiver`通过`pipe`把数据流写入到`双向流`里，再通过`Koa`返回给前端即可，具体实现如下（`controllers/upload.js`）：
 
 ```js
 // 压缩文件
