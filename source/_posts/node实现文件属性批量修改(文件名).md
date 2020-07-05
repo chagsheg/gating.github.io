@@ -252,7 +252,7 @@ module.exports = {
 
 当然知道怎么拆分了还远远不够的，虽然现在我们只有 4 个组件，所以写起来问题不是那么的大，但是呢。。。写起页面来其实也是比较麻烦的，一般正常的写法是：
 
-```vue
+```html
 <template>
   <div class="content">
     <div>
@@ -267,49 +267,49 @@ module.exports = {
 </template>
 
 <script>
-import { Divider } from "ant-design-vue";
-import FileList from "./FileList";
-import FileOutput from "./FileOutput";
-import FileSetting from "./FileSetting";
-export default {
-  name: "ModifyFilename",
-  components: {
-    Divider,
-    FileList,
-    FileOutput,
-    FileSetting,
-  },
-  computed: {
-    // 新文件列表
-    newFiles() {
-      return this.oldFiles;
+  import { Divider } from "ant-design-vue";
+  import FileList from "./FileList";
+  import FileOutput from "./FileOutput";
+  import FileSetting from "./FileSetting";
+  export default {
+    name: "ModifyFilename",
+    components: {
+      Divider,
+      FileList,
+      FileOutput,
+      FileSetting,
     },
-  },
-  data() {
-    return {
-      // 存放这文件名设置的数据
-      fileSettings: {},
-      // 存放自定义序号数组
-      diyForm: {},
-      // 启用输出设置
-      enable: false,
-      // 输出设置后缀名
-      ext: [],
-      // 原文件列表
-      oldFiles: [],
-    };
-  },
-};
+    computed: {
+      // 新文件列表
+      newFiles() {
+        return this.oldFiles;
+      },
+    },
+    data() {
+      return {
+        // 存放这文件名设置的数据
+        fileSettings: {},
+        // 存放自定义序号数组
+        diyForm: {},
+        // 启用输出设置
+        enable: false,
+        // 输出设置后缀名
+        ext: [],
+        // 原文件列表
+        oldFiles: [],
+      };
+    },
+  };
 </script>
 
 <style lang="less" scoped>
-.content {
-  width: 1366px;
-  box-sizing: border-box;
-  padding: 0 15px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
+  .content {
+    width: 1366px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
 </style>
 ```
 
@@ -325,7 +325,7 @@ export default {
 
 针对于这三个问题，我分别使用了`动态组件`、`v-bind`和`provide`实现的，接下来我们就讲讲怎么实现它，先上代码：
 
-```vue
+```html
 <template>
   <div class="content">
     <div v-for="item in components" :key="item.name">
@@ -344,143 +344,143 @@ export default {
 </template>
 
 <script>
-import getNewFileList from "@/utils/";
-import { Divider } from "ant-design-vue";
-import FileList from "./FileList";
-import FileOutput from "./FileOutput";
-import FileSetting from "./FileSetting";
-export default {
-  name: "ModifyFilename",
-  components: {
-    Divider,
-    FileList,
-    FileOutput,
-    FileSetting,
-  },
-  // 传递给深层级子组件
-  provide() {
-    return {
-      parent: this,
-    };
-  },
-  data() {
-    return {
-      components: [
-        {
-          label: "文件名设置",
-          name: "FileSetting",
-          props: "fileSettingsProps",
-        },
-        {
-          label: "输出设置",
-          name: "FileOutput",
-          props: "fileOutputProps",
-        },
-        {
-          label: "输出结果",
-          name: "FileList",
-          props: "fileListProps",
-        },
-      ],
-      fileSettingsProps: {
-        fileSettings: {
-          filename: {
-            value: "",
-            span: 6,
-            type: "file",
-            placeholder: "请输入新的文件名",
+  import getNewFileList from "@/utils/";
+  import { Divider } from "ant-design-vue";
+  import FileList from "./FileList";
+  import FileOutput from "./FileOutput";
+  import FileSetting from "./FileSetting";
+  export default {
+    name: "ModifyFilename",
+    components: {
+      Divider,
+      FileList,
+      FileOutput,
+      FileSetting,
+    },
+    // 传递给深层级子组件
+    provide() {
+      return {
+        parent: this,
+      };
+    },
+    data() {
+      return {
+        components: [
+          {
+            label: "文件名设置",
+            name: "FileSetting",
+            props: "fileSettingsProps",
           },
-          serialNum: {
-            value: "",
-            span: 6,
-            type: "sort-descending",
-            placeholder: "起始序号(默认支持纯数字或纯字母)",
+          {
+            label: "输出设置",
+            name: "FileOutput",
+            props: "fileOutputProps",
           },
-          increment: {
-            value: 1,
-            span: 2,
-            placeholder: "增量",
-            isNum: true,
+          {
+            label: "输出结果",
+            name: "FileList",
+            props: "fileListProps",
           },
-          preReplaceWord: {
-            value: "",
-            span: 3,
-            type: "file",
-            placeholder: "替换前的字符",
+        ],
+        fileSettingsProps: {
+          fileSettings: {
+            filename: {
+              value: "",
+              span: 6,
+              type: "file",
+              placeholder: "请输入新的文件名",
+            },
+            serialNum: {
+              value: "",
+              span: 6,
+              type: "sort-descending",
+              placeholder: "起始序号(默认支持纯数字或纯字母)",
+            },
+            increment: {
+              value: 1,
+              span: 2,
+              placeholder: "增量",
+              isNum: true,
+            },
+            preReplaceWord: {
+              value: "",
+              span: 3,
+              type: "file",
+              placeholder: "替换前的字符",
+            },
+            replaceWord: {
+              value: "",
+              span: 3,
+              type: "file",
+              placeholder: "替换后的字符",
+            },
           },
-          replaceWord: {
-            value: "",
-            span: 3,
-            type: "file",
-            placeholder: "替换后的字符",
+          diyForm: {
+            diySerial: "",
+            separator: "",
+            diyEnable: false,
           },
         },
-        diyForm: {
-          diySerial: "",
-          separator: "",
-          diyEnable: false,
+        fileOutputProps: {
+          enable: false,
+          ext: ["", ""],
         },
+        oldFiles: [],
+      };
+    },
+    computed: {
+      newFiles() {
+        const { fileSettings, diyForm } = this.fileSettingsProps;
+        const { ext, enable } = this.fileOutputProps;
+        const { diySerial, separator, diyEnable } = diyForm;
+        return getNewFileList(
+          this.oldFiles,
+          fileSettings,
+          ext,
+          enable,
+          this.getRange(diySerial, separator, diyEnable)
+        );
       },
-      fileOutputProps: {
-        enable: false,
-        ext: ["", ""],
+    },
+    watch: {
+      "fileSettingsProps.diyForm.diySerial"(val) {
+        if (!val) {
+          this.fileSettingsProps.diyForm.diyEnable = !1;
+        }
       },
-      oldFiles: [],
-    };
-  },
-  computed: {
-    newFiles() {
-      const { fileSettings, diyForm } = this.fileSettingsProps;
-      const { ext, enable } = this.fileOutputProps;
-      const { diySerial, separator, diyEnable } = diyForm;
-      return getNewFileList(
-        this.oldFiles,
-        fileSettings,
-        ext,
-        enable,
-        this.getRange(diySerial, separator, diyEnable)
-      );
     },
-  },
-  watch: {
-    "fileSettingsProps.diyForm.diySerial"(val) {
-      if (!val) {
-        this.fileSettingsProps.diyForm.diyEnable = !1;
-      }
+    methods: {
+      getRange(diySerial, separator, enable) {
+        if (!enable) return null;
+        !separator ? (separator = ",") : null;
+        return diySerial.split(separator);
+      },
+      getProps(key) {
+        if (key === "fileListProps") {
+          return {
+            oldFiles: this.oldFiles,
+            newFiles: this.newFiles,
+          };
+        }
+        return this[key] || {};
+      },
+      update(props, key, val) {
+        if (props === "fileListProps") {
+          return (this[key] = val);
+        }
+        this[props][key] = val;
+      },
     },
-  },
-  methods: {
-    getRange(diySerial, separator, enable) {
-      if (!enable) return null;
-      !separator ? (separator = ",") : null;
-      return diySerial.split(separator);
-    },
-    getProps(key) {
-      if (key === "fileListProps") {
-        return {
-          oldFiles: this.oldFiles,
-          newFiles: this.newFiles,
-        };
-      }
-      return this[key] || {};
-    },
-    update(props, key, val) {
-      if (props === "fileListProps") {
-        return (this[key] = val);
-      }
-      this[props][key] = val;
-    },
-  },
-};
+  };
 </script>
 <style lang="less" scoped>
-.content {
-  width: 1366px;
-  box-sizing: border-box;
-  padding: 0 15px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
+  .content {
+    width: 1366px;
+    box-sizing: border-box;
+    padding: 0 15px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
 </style>
 ```
 
@@ -490,7 +490,7 @@ export default {
 
 所以这里我自定义了一个`update`方法，通过`props`的方式传递给子组件，通过子组件触发父组件的方法实现状态的更新。当然，也通过`provide`把自身传递下去共子组件使用，这里提供`FileListItem(列表组件)`的代码供大家参考：
 
-```vue
+```html
 <template>
   <a-list bordered :dataSource="fileList" :pagination="pagination" ref="list">
     <div slot="header" class="list-header">
@@ -527,71 +527,71 @@ export default {
 </template>
 
 <script>
-import { List, Button, Tooltip } from "ant-design-vue";
-const { Item } = List;
-export default {
-  name: "FileListItem",
-  props: {
-    fileList: {
-      type: Array,
-      required: true,
+  import { List, Button, Tooltip } from "ant-design-vue";
+  const { Item } = List;
+  export default {
+    name: "FileListItem",
+    props: {
+      fileList: {
+        type: Array,
+        required: true,
+      },
+      filename: {
+        type: String,
+        required: true,
+      },
+      pagination: {
+        type: Object,
+        default: () => ({
+          pageSize: 10,
+          showQuickJumper: true,
+          hideOnSinglePage: true,
+        }),
+      },
     },
-    filename: {
-      type: String,
-      required: true,
+    inject: ["parent"],
+    components: {
+      "a-list": List,
+      "a-list-item": Item,
+      "a-list-item-meta": Item.Meta,
+      "a-button": Button,
+      "a-tooltip": Tooltip,
     },
-    pagination: {
-      type: Object,
-      default: () => ({
-        pageSize: 10,
-        showQuickJumper: true,
-        hideOnSinglePage: true,
-      }),
+    methods: {
+      delCurrent(current) {
+        this.parent.oldFiles.splice(current, 1);
+      },
+      clearFiles() {
+        this.parent.update("fileListProps", "oldFiles", []);
+      },
+      drop(e) {
+        e.preventDefault();
+        this.parent.update("fileListProps", "oldFiles", [
+          ...this.parent.oldFiles,
+          ...e.dataTransfer.files,
+        ]);
+      },
     },
-  },
-  inject: ["parent"],
-  components: {
-    "a-list": List,
-    "a-list-item": Item,
-    "a-list-item-meta": Item.Meta,
-    "a-button": Button,
-    "a-tooltip": Tooltip,
-  },
-  methods: {
-    delCurrent(current) {
-      this.parent.oldFiles.splice(current, 1);
+    mounted() {
+      let $el = this.$refs.list.$el;
+      this.$el = $el;
+      if ($el) {
+        $el.ondragenter = $el.ondragover = $el.ondragleave = () => false;
+        $el.addEventListener("drop", this.drop, false);
+      }
     },
-    clearFiles() {
-      this.parent.update("fileListProps", "oldFiles", []);
+    destroyed() {
+      this.$el && this.$el.removeEventListener("drop", this.drop, false);
     },
-    drop(e) {
-      e.preventDefault();
-      this.parent.update("fileListProps", "oldFiles", [
-        ...this.parent.oldFiles,
-        ...e.dataTransfer.files,
-      ]);
-    },
-  },
-  mounted() {
-    let $el = this.$refs.list.$el;
-    this.$el = $el;
-    if ($el) {
-      $el.ondragenter = $el.ondragover = $el.ondragleave = () => false;
-      $el.addEventListener("drop", this.drop, false);
-    }
-  },
-  destroyed() {
-    this.$el && this.$el.removeEventListener("drop", this.drop, false);
-  },
-};
+  };
 </script>
 
 <style lang="less" scoped>
-.list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 </style>
 ```
 
@@ -627,7 +627,7 @@ new Vue({
 
 因为我们的`ant-design-vue`版本已经是`1.5.0+`，而`FormModel`组件也支持支持`v-model`检验，那么就更符合我们的需求啦，所以我这里改了下我的代码，使用`FormModel`组件实现我们的需求了：
 
-```vue
+```html
 <template>
   <a-modal
     title="自定义序号"
@@ -771,7 +771,7 @@ this.axios({
 
 基本下，这样就可以实现下载文件啦，下面是`FileSetting.vue`源码，仅供参考：
 
-```vue
+```html
 <template>
   <a-row type="flex" :gutter="16">
     <a-col
@@ -849,113 +849,113 @@ this.axios({
 </template>
 
 <script>
-import {
-  Row as ARow,
-  Col as ACol,
-  Icon as AIcon,
-  Input as AInput,
-  Switch as ASwitch,
-  Button as AButton,
-  InputNumber as AInputNumber,
-  FormModel as AFormModel,
-} from "ant-design-vue";
-import { saveAs } from "file-saver";
-// 是否符合默认序号规范
-import { isDefaultSerialNum } from "@/utils/regexp";
-const AFormModelItem = AFormModel.Item;
+  import {
+    Row as ARow,
+    Col as ACol,
+    Icon as AIcon,
+    Input as AInput,
+    Switch as ASwitch,
+    Button as AButton,
+    InputNumber as AInputNumber,
+    FormModel as AFormModel,
+  } from "ant-design-vue";
+  import { saveAs } from "file-saver";
+  // 是否符合默认序号规范
+  import { isDefaultSerialNum } from "@/utils/regexp";
+  const AFormModelItem = AFormModel.Item;
 
-// 获取content-disposition响应头的默认文件名
-const getFileName = (str) => str.replace(/^.*filename="?([^"]+)"?.*$/, "$1");
+  // 获取content-disposition响应头的默认文件名
+  const getFileName = (str) => str.replace(/^.*filename="?([^"]+)"?.*$/, "$1");
 
-export default {
-  name: "FileSetting",
-  props: {
-    fileSettings: {
-      type: Object,
-      required: true,
-    },
-    diyForm: {
-      type: Object,
-      required: true,
-    },
-  },
-  components: {
-    ARow,
-    ACol,
-    AIcon,
-    AInput,
-    ASwitch,
-    AButton,
-    AInputNumber,
-    AFormModel,
-    AFormModelItem,
-  },
-  inject: ["parent"],
-  // 没有自定义序号时不可操作
-  computed: {
-    disabled() {
-      return !this.diyForm.diySerial;
-    },
-  },
-  data() {
-    return {
-      serialNumVisible: !1,
-      rules: {
-        diySerial: [
-          {
-            required: true,
-            message: "请输入自定义序号",
-            trigger: "blur",
-          },
-        ],
+  export default {
+    name: "FileSetting",
+    props: {
+      fileSettings: {
+        type: Object,
+        required: true,
       },
-    };
-  },
-  methods: {
-    handleModify() {
-      // 获取填写的序号
-      const serialNum = this.fileSettings.serialNum.value;
-      // 当没有启用自定义时，走默认规则
-      if (isDefaultSerialNum(serialNum) && !this.diyForm.enable) {
-        return this.$message.error("请输入正确的序号，格式为纯数字或纯字母");
-      }
-      const { newFiles, oldFiles } = this.parent;
-      const data = new FormData();
-      for (let i = 0; i < oldFiles.length; i++) {
-        const { name } = newFiles[i];
-        data.append("files", oldFiles[i]);
-        data.append("name", name);
-      }
-      this.axios({
-        method: "post",
-        url: "/upload",
-        data,
-        responseType: "blob",
-      })
-        .then((res) => {
-          const disposition = res.headers["content-disposition"];
-          // 转换为Blob对象
-          let file = new Blob([res.data], {
-            type: "application/zip",
-          });
-          // 下载文件
-          saveAs(file, getFileName(disposition));
-          this.$message.success("修改成功");
-        })
-        .catch(() => {
-          this.$message.error("发生错误");
-        });
+      diyForm: {
+        type: Object,
+        required: true,
+      },
     },
-    handleDiySerialNum() {
-      this.$refs.diyForm.validate((valid) => {
-        if (!valid) {
-          return false;
+    components: {
+      ARow,
+      ACol,
+      AIcon,
+      AInput,
+      ASwitch,
+      AButton,
+      AInputNumber,
+      AFormModel,
+      AFormModelItem,
+    },
+    inject: ["parent"],
+    // 没有自定义序号时不可操作
+    computed: {
+      disabled() {
+        return !this.diyForm.diySerial;
+      },
+    },
+    data() {
+      return {
+        serialNumVisible: !1,
+        rules: {
+          diySerial: [
+            {
+              required: true,
+              message: "请输入自定义序号",
+              trigger: "blur",
+            },
+          ],
+        },
+      };
+    },
+    methods: {
+      handleModify() {
+        // 获取填写的序号
+        const serialNum = this.fileSettings.serialNum.value;
+        // 当没有启用自定义时，走默认规则
+        if (isDefaultSerialNum(serialNum) && !this.diyForm.enable) {
+          return this.$message.error("请输入正确的序号，格式为纯数字或纯字母");
         }
-        this.serialNumVisible = !1;
-      });
+        const { newFiles, oldFiles } = this.parent;
+        const data = new FormData();
+        for (let i = 0; i < oldFiles.length; i++) {
+          const { name } = newFiles[i];
+          data.append("files", oldFiles[i]);
+          data.append("name", name);
+        }
+        this.axios({
+          method: "post",
+          url: "/upload",
+          data,
+          responseType: "blob",
+        })
+          .then((res) => {
+            const disposition = res.headers["content-disposition"];
+            // 转换为Blob对象
+            let file = new Blob([res.data], {
+              type: "application/zip",
+            });
+            // 下载文件
+            saveAs(file, getFileName(disposition));
+            this.$message.success("修改成功");
+          })
+          .catch(() => {
+            this.$message.error("发生错误");
+          });
+      },
+      handleDiySerialNum() {
+        this.$refs.diyForm.validate((valid) => {
+          if (!valid) {
+            return false;
+          }
+          this.serialNumVisible = !1;
+        });
+      },
     },
-  },
-};
+  };
 </script>
 ```
 
