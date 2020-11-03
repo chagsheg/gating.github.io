@@ -14,6 +14,7 @@ date: 2020/11/03
 本次教程可能过于啰嗦，所以这里先放上预览地址供大家预览——[点我预览](https://gating.gitee.io/demo/baidu-map-demo/)，也可到文末直接下载代码先自行体验。。。
 
 > ps: 又因为百度地图 1.2 以上需要 AK 密钥，所以这里我直接使用 1.2 版本实现
+> ps: 😐1.x版本是不能支持https的，所以使用时请注意
 
 # 简单的说下实现的效果
 
@@ -143,7 +144,7 @@ export default {
 
 并且`ref`返回的是一个对象值，该对像只包含一个 `value` 属性，且只有我们在`setup`函数进行访问/修改的时候需要加.value，接下来我们就修改下`HelloWorld`组件，来实现一下`选择最喜爱的水果`的小程序吧。
 
-```vue
+```html
 <template>
   <div>请选择你最喜欢的水果</div>
   <div>
@@ -181,7 +182,7 @@ export default {
 
 `reactive`函数接收一个普通对象，返回一个响应式的数据对象。既然是普通对象，那么无论是变量、还是方法，都可以作为对象中的一个属性来使用啦，那么我们就能优雅的修改我们的值，不用再通过`.value`修改我们的值啦，那么就通过`reactive`修改下我们的代码吧。
 
-```vue
+```html
 <template>
   <div>请选择你最喜欢的水果</div>
   <div>
@@ -217,7 +218,7 @@ export default {
 
 那么我们继续优化我们的代码吧。
 
-```vue
+```html
 <template>
   <div>请选择你最喜欢的水果</div>
   <div>
@@ -259,7 +260,7 @@ Vue3 获取真实 dom 元素也比较简单，基本和往常一样，大概分�
 2. 在 setup 中定义一个和标签上 ref 名称一样的 `Ref` 的示例，并返回
 3. onMounted 就可以得到 ref 的 RefImpl 的对象，并通过.value 获取
 
-```vue
+```html
 <template>
   <div>请选择你最喜欢的水果</div>
   <div>
@@ -319,7 +320,7 @@ watch([fooRef, barRef], ([foo, bar], [prevFoo, prevBar]) => {
 
 用 `vue-cli` 生产的 Vue3 项目中，我们修改了`HelloWorld`用于学习了 Vue3 的基本 Api，实际上我们接下来的案例是不需要这些代码的，所以我们打开`App.vue`，去掉部分无关代码，并在`components`目录新建`MapDialog.vue`文件，内容如下：
 
-```vue
+```html
 <template>
   <div>这是地图弹窗</div>
 </template>
@@ -333,7 +334,7 @@ export default {
 
 清理无用代码后并导入`MapDialog`组件
 
-```vue
+```html
 <template>
   <map-dialog />
 </template>
@@ -365,7 +366,7 @@ export default {
 
 2. 编写代码
 
-```vue
+```html
 <template>
   <div id="map"></div>
 </template>
@@ -428,7 +429,7 @@ export default {
 
 `App.vue`代码如下
 
-```vue
+```html
 <template>
   您选择的位置是：{{ place.address }}
   <a-button @click="toggleVisible">选择位置</a-button>
@@ -468,7 +469,7 @@ export default {
 
 `MapDialog.vue` 基础代码如下：
 
-```vue
+```html
 <template>
   <a-modal
     :visible="visible"
